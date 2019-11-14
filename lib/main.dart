@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -14,27 +15,29 @@ class Home extends StatelessWidget {
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text("Drum Beats"),
+        title: Text("Beats"),
       ),
-      body: DrumBody(),
+      body: Drum(),
     );
   }
 }
 
-class DrumBody extends StatefulWidget {
-  @override
-  _DrumBodyState createState() => _DrumBodyState();
-}
+class Drum extends StatelessWidget {
+  void beatPlayer({fileName: int}) {
+    final player = AudioCache();
+    player.play("beat$fileName.wav");
+  }
 
-class _DrumBodyState extends State<DrumBody> {
-  Widget DrumKey({BeatName: String}) {
+  Widget drumKey({color: Color, BeatNum: int}) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10.0),
-      child: FlatButton(
-        padding: EdgeInsets.all(16.0),
-        child: Text(BeatName),
-        color: Colors.white,
-        onPressed: () {},
+      child: Expanded(
+        child: FlatButton(
+          padding: EdgeInsets.all(32.0),
+          color: color,
+          onPressed: () {
+            beatPlayer(fileName: BeatNum);
+          },
+        ),
       ),
     );
   }
@@ -45,46 +48,50 @@ class _DrumBodyState extends State<DrumBody> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            DrumKey(
-              BeatName: "Crash",
+            drumKey(
+              color: Colors.red.shade300,
+              BeatNum: 1,
+            ),
+            drumKey(
+              color: Colors.green.shade300,
+              BeatNum: 2,
             ),
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            DrumKey(
-              BeatName: "High Tom",
+            drumKey(
+              color: Colors.blue.shade300,
+              BeatNum: 3,
             ),
-            DrumKey(
-              BeatName: "Med Tom",
-            ),
-            DrumKey(
-              BeatName: "Low Tom",
+            drumKey(
+              color: Colors.purple.shade300,
+              BeatNum: 4,
             ),
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            DrumKey(
-              BeatName: "Open Hih",
+            drumKey(
+              color: Colors.yellow.shade300,
+              BeatNum: 5,
             ),
-            DrumKey(
-              BeatName: "Closed Hih",
+            drumKey(
+              color: Colors.orange.shade300,
+              BeatNum: 6,
             ),
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            DrumKey(
-              BeatName: "Snare",
+            drumKey(
+              color: Colors.teal.shade300,
+              BeatNum: 7,
             ),
-            DrumKey(
-              BeatName: "Kick",
+            drumKey(
+              color: Colors.blueGrey.shade300,
+              BeatNum: 8,
             ),
           ],
         ),
