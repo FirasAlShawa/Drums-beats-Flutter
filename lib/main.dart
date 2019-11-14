@@ -27,61 +27,65 @@ class DrumBody extends StatefulWidget {
 }
 
 class _DrumBodyState extends State<DrumBody> {
+  Widget DrumKey({BeatName: String}) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10.0),
+      child: FlatButton(
+        padding: EdgeInsets.all(16.0),
+        child: Text(BeatName),
+        color: Colors.white,
+        onPressed: () {},
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton(
-              color: Colors.white,
-              child: Text("Beat 1"),
-              onPressed: () {},
+            DrumKey(
+              BeatName: "Crash",
             ),
-            FlatButton(
-              color: Colors.white,
-              child: Text("Beat 2"),
-              onPressed: () {},
-            ),
-            FlatButton(
-              color: Colors.white,
-              child: Text("Beat 3"),
-              onPressed: () {},
-            ),
-            FlatButton(
-              color: Colors.white,
-              child: Text("Beat 4"),
-              onPressed: () {},
-            )
           ],
         ),
-        Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton(
-              color: Colors.white,
-              child: Text("Beat 1"),
-              onPressed: () {},
+            DrumKey(
+              BeatName: "High Tom",
             ),
-            FlatButton(
-              color: Colors.white,
-              child: Text("Beat 2"),
-              onPressed: () {},
+            DrumKey(
+              BeatName: "Med Tom",
             ),
-            FlatButton(
-              color: Colors.white,
-              child: Text("Beat 3"),
-              onPressed: () {},
+            DrumKey(
+              BeatName: "Low Tom",
             ),
-            FlatButton(
-              color: Colors.white,
-              child: Text("Beat 4"),
-              onPressed: () {},
-            )
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            DrumKey(
+              BeatName: "Open Hih",
+            ),
+            DrumKey(
+              BeatName: "Closed Hih",
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            DrumKey(
+              BeatName: "Snare",
+            ),
+            DrumKey(
+              BeatName: "Kick",
+            ),
           ],
         ),
       ],
